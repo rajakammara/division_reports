@@ -23,6 +23,19 @@ class WeblandController extends Controller
     $postUrl = "http://uatwebland.ap.gov.in/WeblandDashboard/WtaxProgress/MTRRD";
     $response = Http::withHeaders(['Content-type'=>'application/json;charset=UTF-8'])->post($postUrl,$postdata)->body();
     //dd($response);
-    return $response;
+    $mtc_response = json_decode($response,true);
+
+    $postdata = [
+      "Status"=>'MD',
+      "DistCode"=>"12",
+      "Division"=>"2",
+      "Mandal"=>'',
+      "Fromdate"=>"01/05/2022",
+      "Enddate"=>"$currentDate",
+      "ProcedureName"=>"MutationTransactions_DatesWise",
+    ];
+    $response = Http::withHeaders(['Content-type'=>'application/json;charset=UTF-8'])->post($postUrl,$postdata)->body();
+    $mtt_response = json_decode($response,true);
+    return view('webland',compact('mtt_response','mtc_response'));
   }
 }
