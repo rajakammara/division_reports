@@ -54,8 +54,8 @@ class ApsevaAppController extends Controller
         ApsevaApp::insert($data);
         DB::table('apseva_apps as a')->join('mandalmasters as m', 'a.mandal_name', '=', 'm.mandal')->update(['a.new_mandal_name' => DB::raw("m.new_mandal"), 'a.div_name' => DB::raw("m.division")]);
         
-        //return $data;
-        return "Report Updated successfully";
+        return $data;
+       // return "Report Updated successfully";
     }
     
 
@@ -89,8 +89,8 @@ class ApsevaAppController extends Controller
         DB::table('apseva_abstracts')->delete();
         ApsevaAbstract::insert($data);
         DB::table('apseva_abstracts as a')->join('mandalmasters as m', 'a.mandal_name', '=', 'm.mandal')->update(['a.new_mandal_name' => DB::raw("m.new_mandal"), 'a.div_name' => DB::raw("m.division")]);
-        //return json_encode($data);
-        return "Report Updated successfully";
+        return json_encode($data);
+       // return "Report Updated successfully";
     }
     //Get Apseva Abstract report
     public function get_apseva_mandal_abstract(){
