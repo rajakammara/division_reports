@@ -36,8 +36,8 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
               aria-expanded="false">Update Report</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="/update_report">Apseva Service Report</a></li>
-              <li><a class="dropdown-item" href="/update_abstract_report">Apseva Mandal Report</a></li>
+              <li><a class="dropdown-item" href="/update_report" target="_blank">Apseva Service Report</a></li>
+              <li><a class="dropdown-item" href="/update_abstract_report" target="_blank">Apseva Mandal Report</a></li>
 
             </ul>
           </li>
