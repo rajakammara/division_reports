@@ -41,6 +41,6 @@ Route::get('/otc_report', [WeblandController::class, 'otc_report']);
 
 //Technical issues
 Route::get('/technical_issues',[TechnicalIssueController::class,'index']);
-
-
+Route::post('/create_issue',[TechnicalIssueController::class,'store'])->name('create_issue');
+Route::delete('/{issue}/delete', [TechnicalIssueController::class,'destroy'])->name('issue.destroy');
 require __DIR__.'/auth.php';

@@ -3,7 +3,23 @@
 Apseva Linelist
 @endsection
 @section('content')
+@if (session('status'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success</strong> {{ session('status') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <table class="table table-bordered table-sm">
   <thead>
     <tr>
@@ -21,7 +37,7 @@ Apseva Linelist
       <th>Request Id</th>
       <th>Remarks</th>
       @can('isAdmin')
-      <th>Issue</th>
+      <th>Issue Description</th>
       @else
 
       @endcan
@@ -36,8 +52,10 @@ Apseva Linelist
       <td> {{$item->service_name}} </td>
       <td> {{$item->app_number}} </td>
       <td> {{$item->sla_status}} </td>
+      <td> {{$item->remarks}} </td>
       @can('isAdmin')
       <td>
+        @if (is_null($item->remarks))
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
           data-bs-target="#issueModal{{$loop->iteration}}">
@@ -53,8 +71,10 @@ Apseva Linelist
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form action="/action_page.php">
+                <form action="{{route('create_issue')}}" method="POST">
                   @csrf
+                  <input type="hidden" name="appid" value="{{$item->id}}">
+                  <input type="hidden" name="service_name" value="{{$item->service_name}}">
                   <div class="mb-3 mt-2">
                     <label for="mandal_name" class="form-label">Mandal:</label>
                     <input readonly class="form-control" id="mandal_name" name="mandal_name"
@@ -67,16 +87,17 @@ Apseva Linelist
                   </div>
                   <div class="mb-3">
                     <label for="portal" class="form-label">Portal:</label>
-                    <select class="form-select" name="portal">
-                      <option>Webland</option>
-                      <option>Apseva</option>
-                      <option>Meeseva</option>
+                    <select class="form-select" name="portal" required>
+                      <option selected value="">Choose portal related to issue</option>
+                      <option value="Webland">Webland</option>
+                      <option value="Apseva">Apseva</option>
+                      <option value="Meeseva">Meeseva</option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label for="floatingTextarea2">Issue</label>
                     <textarea class="form-control" placeholder="Enter Issue Description" id="floatingTextarea2"
-                      style="height: 100px"></textarea>
+                      style="height: 100px" name="remarks" required></textarea>
 
                   </div>
 
@@ -93,7 +114,7 @@ Apseva Linelist
         </div>
       </td>
       @else
-
+      @endif
       @endcan
 
     </tr>
