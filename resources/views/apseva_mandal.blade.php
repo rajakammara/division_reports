@@ -4,18 +4,25 @@ Apseva Service wise Abstract
 @endsection
 @section('content')
 <div>
-  <div class="fs-5 text-center">APSEVA (Revenue & CS) Service wise PBSLA</div>
+
   <table class="table table-bordered table-sm">
     <thead style=" font-size: 9pt;" class="verticle-align-middle text-center">
-      <th>
-        Service
-      </th>
-      @foreach($columnHeadings as $heading)
-      <th>
-        {{ucfirst(strtolower($heading))}}
-      </th>
-      @endforeach
-      <th>Total</th>
+      <tr>
+        <th colspan=13 class="fs-5 text-center">
+          APSEVA (Revenue & CS) Service wise PBSLA
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Service
+        </th>
+        @foreach($columnHeadings as $heading)
+        <th>
+          {{ucfirst(strtolower($heading))}}
+        </th>
+        @endforeach
+        <th>Total</th>
+      </tr>
     </thead>
     <tbody style=" font-size: 9pt;">
       @foreach($apseva_abstract as $item)

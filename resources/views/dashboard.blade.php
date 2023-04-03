@@ -16,8 +16,13 @@
             Abstract</a>
         <a href="apseva_linelist" target="_blank" class="list-group-item list-group-item-action">APSEVA PBSLA
             Linelist</a>
-        <a href="#" class="list-group-item list-group-item-action">Technical Issues</a>
 
+        <a href="/technical_issues" target="_blank" class="list-group-item list-group-item-action">Technical Issues</a>
+        @can('isAdmin')
+        <h4>You are admin</h4>
+        @else
+        <h4>You are User</h4>
+        @endcan
     </div>
 </div>
 @stop

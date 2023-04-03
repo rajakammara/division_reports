@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApsevaAppController;
 use App\Http\Controllers\WeblandController;
+use App\Http\Controllers\TechnicalIssueController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,4 +38,9 @@ Route::get('/apseva_linelist',[ApsevaAppController::class,'apseva_linelist']);
 Route::get('/mutation_report', [WeblandController::class, 'mutation_report']);
 Route::get('/otc_report', [WeblandController::class, 'otc_report']);
 });
+
+//Technical issues
+Route::get('/technical_issues',[TechnicalIssueController::class,'index']);
+
+
 require __DIR__.'/auth.php';
