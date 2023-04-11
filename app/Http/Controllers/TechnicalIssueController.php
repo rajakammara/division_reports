@@ -6,6 +6,9 @@ use App\Models\TechnicalIssue;
 use App\Models\ApsevaApp;
 use Illuminate\Http\Request;
 use DB;
+use DOMDocument;
+use DOMXPath;
+use Illuminate\Support\Facades\Http;
 class TechnicalIssueController extends Controller
 {
     /**
@@ -108,5 +111,57 @@ class TechnicalIssueController extends Controller
         $technicalIssue->delete();
          return redirect('/technical_issues')->with('status', 'Deleted successfully');
         
+    }
+
+    public function getCasteIncomeReport(){
+        $url="http://36.255.253.208/castecertificate.aspx";
+        $jar = new \GuzzleHttp\Cookie\CookieJar();
+        $client = new \GuzzleHttp\Client(['cookies' => $jar]);
+        $response = $client->get($url); 
+        $cookie = $jar->getCookieByName('ASP.NET_SessionId');
+        //dd($cookie->getValue());
+        //dd($response->getBody()->getContents());      
+        $htmlString = $response->getBody()->getContents();
+        //add this line to suppress any warnings
+        libxml_use_internal_errors(true);
+        $doc = new \DOMDocument();
+        $doc->preserveWhiteSpace = false; 
+        $doc->loadHTML($htmlString);
+        $viewstategenerator=$doc->getElementById('__VIEWSTATEGENERATOR')->getAttribute('value');
+        $viewstate=$doc->getElementById('__VIEWSTATE')->getAttribute('value');
+        $eventvalidation=$doc->getElementById('__EVENTVALIDATION')->getAttribute('value');
+        $postdata=[
+            '__VIEWSTATE'=>$viewstate,
+            '__VIEWSTATEGENERATOR'=>$viewstategenerator,
+            '__EVENTVALIDATION'=>$eventvalidation,
+            '__EVENTTARGET'=>'ctl00$ContentPlaceHolder1$GridView2$ctl04$LinkButton2'
+
+        ];
+       // dd($postdata);
+        $request = $client->request('POST',$url,['form_params'=>$postdata]);
+        
+        dd($request->getBody()->getContents());
+        $doc->loadHTML($request->getBody()->getContents());
+        //$table = $doc->getElementById('ctl00_ContentPlaceHolder1_GridView2');
+        $tables = $doc->getElementsByTagName('table'); 
+        dd($doc);
+        $rows = $doc->getElementsByTagName('td');
+       // dd($rows);
+       $data=[];
+       foreach ($rows as $row) {
+        $cols = $row->getElementsByTagName('td');
+        dd($row);
+        echo 'Sno: '.$cols->item(0)->nodeValue.'<br />'; 
+        echo 'Mandal: '.$cols->item(1)->nodeValue.'<br />'; 
+        $temp=array('Sno'=>$cols->item(0)->nodeValue,'Mandal'=>$cols->item(1)->nodeValue);
+        array_push($data,$temp);
+    }
+        return view('temp',compact('data'));
+    }
+
+    public function getLocalCasteIncomeReport(){
+        $myfile = fopen("tempdata.txt","r") or die("Unable to open file");
+        echo fread($myfile,filesize("tempdata.txt"));
+        fclose($myfile);
     }
 }

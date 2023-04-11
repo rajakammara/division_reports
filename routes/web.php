@@ -37,10 +37,13 @@ Route::get('/apseva_linelist',[ApsevaAppController::class,'apseva_linelist']);
 //webland
 Route::get('/mutation_report', [WeblandController::class, 'mutation_report']);
 Route::get('/otc_report', [WeblandController::class, 'otc_report']);
-});
-
 //Technical issues
 Route::get('/technical_issues',[TechnicalIssueController::class,'index']);
 Route::post('/create_issue',[TechnicalIssueController::class,'store'])->name('create_issue');
 Route::delete('/{issue}/delete', [TechnicalIssueController::class,'destroy'])->name('issue.destroy');
+Route::get('/getcastereport',[TechnicalIssueController::class,'getCasteIncomeReport']);
+});
+
+
+Route::get('/temp',[TechnicalIssueController::class,'getLocalCasteIncomeReport']);
 require __DIR__.'/auth.php';

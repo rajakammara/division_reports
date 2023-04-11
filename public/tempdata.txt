@@ -1,0 +1,755 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title> Citizen Outreach </title>
+    <link rel="icon" sizes="57x57" href="ebcimages/ico.png">
+	<!-- Bootstrap -->
+	<link href="/ebccss/bootstrap.min.css" rel="stylesheet">
+	<link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ebccss/owl.carousel.css">
+    <link rel="stylesheet" href="/ebccss/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/ebccss/jquery.bxslider.css">
+    <link rel='stylesheet prefetch' href="/ebccss/sweetalert.min.css">
+	<link rel="stylesheet" type="text/css" href="/ebccss/cfms.css">
+	<style>
+	strong{font-weight:bold;}
+	</style>
+    <style>
+table {
+  border:solid 1px #000;
+  width: 100%;
+}
+
+th, td,th {
+  border:solid 1px #000;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+
+
+
+    
+
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="./MandalwiseCasteCertificate.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C0D77F1D" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdACjqKoGBAL1i4ycI9gea79q2rM/hVTfDt/c3R5+BOJxbUixlVotyrj0oKA+euQ4TOfgGVdusxUZdKznFHqd6fyAW0APL1KcEy71BAeSIdNe/3fipVVlIN9QM7qy5EmOb97jNOoRzfQ0rj4iJXkkuKifaHUnffVK4oZ5CZTOUW/ub2e2H0pSuNjF8g71H/KRC/x0BPL2Re8xIaG4n0j9WUJov6EEz6kz0TBqcatgxfTu1dNa05A2fJdsLPvz1NE7oqu1hL5CfBFXPY8xIpZg6lUKHhSRHIguYVyKiFWFyMVg1RIbuEG2w+mgB0oGCi3rj4W8ZV8ZZ4leFMs5M2qURrf7IByzga2EPDCgUo4l8hwsFlnI9I53ZzMoPldWSJ1QGDZTFZA/jzzv6ynVJfQILca4OZz7zm5Afyn+fJuzdna2sdMt4L53lFrhdTLFvXKFcp1hqWZSNOnok5EyZZGpb4ohjoJ/Sw7wAyuTTX4SdoP2flLrSenxDJ5hiXrr2iZyKowTvEcL/jNC17SzQW9HBao3S52bzWaa5L9RjQp1epFDBEvSXBJUdRxZkOb++P0WvB/J3z4x780dh6DX5vtJYZ1hAPIPtXIdsAqKAUPlLMqEtNfs3l0Gfe3mEst8OKQujhHhFaHODrSa5DPZyYGAEojQ08e8XgODfvuWCmz9NXShtl2+/xVelK910PgGHuLgefrVGNLxoheKcC5+Gb7dlJXVb8l862re+nhoCTBvgs3mHB+od6Im607lyU6hjklVzm6gpDOgiobOV3LtF8Zhlv0mHVDSGY9pDDgIEcQxrfm5j7wTemx4yJQH1fCJyE1Pg+yzJPpkViWkVdhHYlKF+CcE5Md7Tc8ACgePlCaNrFuf39yrjqbo=" />
+</div>
+
+       <body style="overflow-x:hidden;" class="font-inc-dec">
+   <div id="fsCycler"></div>
+	<div id="google_translate_element" style="display: none">
+    </div>
+	 <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+	<div class="top-blue-strip"> 
+	   <div class="container-fluid ">
+            <div class="container  "> 
+			     <div class="row">
+				    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px; margin-top:5px;">
+                        <img src="/images/BO1.png" class="img-responsive" style="width:100%;"/>
+                     </div>
+			     </div>
+			</div>
+		<div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-inc-dec"  style="padding:0px;">
+					 <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu <i class="fa fa-bars"></i></a>   
+						<nav>
+                            <ul class="menu" style="margin-bottom:0px;">
+                                <li><a href="https://egsws.ap.gov.in/home.html">Home</a></li>
+                               <!-- <li><a  href="about.html">Scheme</a></li>-->
+                                <li><a  href="https://egsws.ap.gov.in/eKYC.html">eKYC Reports</a></li> 
+								 <li><a  href="https://egsws.ap.gov.in/ack.html">Acknowledgement</a></li> 
+								 <li><a  href="https://egsws.ap.gov.in/others.html">Others</a></li> 
+								  
+                                <!--<li><a  href="">Contact us</a></li> -->
+                            </ul>
+					  </nav>
+				</div><!--end mainWrap-->
+            </div>
+		</div>
+        
+     <div class="container shadow-left-right" style="margin-bottom:-20px;min-height: 100vh;overflow: hidden;">
+		
+     
+            
+            
+        <div class="row">
+         
+             <h2 class="page-title" style="font-size:28px;font-weight:bold; text-align: center; margin-top:10px;"> Application for Integrated Caste & Income Certificate
+                                     <br /><span id="ctl00_ContentPlaceHolder1_Label1">ANANTHAPURAMU District Mandal Wise Abstract</span></h2>
+				    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:10px;">
+                    
+ 
+
+  					<div style="overflow-x: auto;">
+
+                                <br />
+
+                                <div>
+	<table cellspacing="0" cellpadding="6" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView2" style="height:314px;width:94%;border-collapse:collapse;">
+		<tr class="border border-b-2 dark:border-dark-5 whitespace-no-wrap" align="center" style="color:White;background-color:#006699;font-weight:bold;">
+			<th align="center" scope="col" style="background-color:#006699;"><CENTER>S.No</CENTER></th><th scope="col" style="background-color:#006699;"><CENTER>Mandal Name</CENTER></th><th align="center" scope="col" style="background-color:#006699;"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2&#39;,&#39;Sort$pmjjbye&#39;)" style="color:White;">Total Students</a></th><th align="center" scope="col" style="background-color:#006699;"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2&#39;,&#39;Sort$pmjjbye&#39;)" style="color:White;">Updated Students</a></th><th align="center" scope="col" style="background-color:#006699;"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2&#39;,&#39;Sort$pmjjbye&#39;)" style="color:White;">Having Old Certificates</a></th><th align="center" scope="col" style="background-color:#006699;"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2&#39;,&#39;Sort$pmjjbye&#39;)" style="color:White;">Applied for New Certificates</a></th>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl02_lblRowNumber">1</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl02_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl02$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">ANANTAPUR (URBAN)</a>
+                        </td><td align="center">5087</td><td align="center">3204</td><td align="center">1954</td><td align="center">1250</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl03_lblRowNumber">2</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl03_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl03$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GUNTAKAL (URBAN)</a>
+                        </td><td align="center">2509</td><td align="center">2056</td><td align="center">1046</td><td align="center">1010</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl04_lblRowNumber">3</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl04_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl04$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">RAYADURG (URBAN)</a>
+                        </td><td align="center">1336</td><td align="center">804</td><td align="center">555</td><td align="center">249</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl05_lblRowNumber">4</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl05_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl05$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">TADIPATRI (URBAN)</a>
+                        </td><td align="center">2181</td><td align="center">2179</td><td align="center">1269</td><td align="center">910</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl06_lblRowNumber">5</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl06_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl06$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GOOTY (URBAN)</a>
+                        </td><td align="center">1023</td><td align="center">911</td><td align="center">448</td><td align="center">463</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl07_lblRowNumber">6</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl07_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl07$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">PAMIDI (URBAN)</a>
+                        </td><td align="center">507</td><td align="center">403</td><td align="center">293</td><td align="center">110</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl08_lblRowNumber">7</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl08_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl08$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KALYANADURGAM (URBAN)</a>
+                        </td><td align="center">818</td><td align="center">818</td><td align="center">347</td><td align="center">471</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl09_lblRowNumber">8</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl09_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl09$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">D.HIREHAL</a>
+                        </td><td align="center">816</td><td align="center">633</td><td align="center">152</td><td align="center">481</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl10_lblRowNumber">9</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl10_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl10$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">RAYADURG</a>
+                        </td><td align="center">773</td><td align="center">668</td><td align="center">246</td><td align="center">422</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl11_lblRowNumber">10</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl11_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl11$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KANEKAL</a>
+                        </td><td align="center">1286</td><td align="center">1286</td><td align="center">568</td><td align="center">718</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl12_lblRowNumber">11</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl12_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl12$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">BOMMANAHAL</a>
+                        </td><td align="center">1134</td><td align="center">686</td><td align="center">413</td><td align="center">273</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl13_lblRowNumber">12</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl13_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl13$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">VIDAPANKAL</a>
+                        </td><td align="center">1123</td><td align="center">920</td><td align="center">205</td><td align="center">715</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl14_lblRowNumber">13</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl14_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl14$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GUNTHAKAL</a>
+                        </td><td align="center">1074</td><td align="center">1073</td><td align="center">419</td><td align="center">654</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl15_lblRowNumber">14</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl15_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl15$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GOOTY</a>
+                        </td><td align="center">952</td><td align="center">898</td><td align="center">738</td><td align="center">160</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl16_lblRowNumber">15</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl16_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl16$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">PEDDAVADUGUR</a>
+                        </td><td align="center">1023</td><td align="center">957</td><td align="center">876</td><td align="center">81</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl17_lblRowNumber">16</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl17_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl17$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">YADIKI</a>
+                        </td><td align="center">1223</td><td align="center">1082</td><td align="center">997</td><td align="center">85</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl18_lblRowNumber">17</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl18_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl18$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">TADIPARTRI</a>
+                        </td><td align="center">1214</td><td align="center">1214</td><td align="center">883</td><td align="center">331</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl19_lblRowNumber">18</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl19_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl19$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">PEDDAPAPPUR</a>
+                        </td><td align="center">837</td><td align="center">767</td><td align="center">742</td><td align="center">25</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl20_lblRowNumber">19</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl20_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl20$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">PAMIDI</a>
+                        </td><td align="center">648</td><td align="center">591</td><td align="center">496</td><td align="center">95</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl21_lblRowNumber">20</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl21_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl21$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">VAJRAKARUR</a>
+                        </td><td align="center">1090</td><td align="center">1085</td><td align="center">366</td><td align="center">719</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl22_lblRowNumber">21</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl22_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl22$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">URAVAKONDA</a>
+                        </td><td align="center">1639</td><td align="center">1612</td><td align="center">673</td><td align="center">939</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl23_lblRowNumber">22</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl23_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl23$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">BELUGUPPA</a>
+                        </td><td align="center">928</td><td align="center">867</td><td align="center">579</td><td align="center">288</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl24_lblRowNumber">23</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl24_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl24$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GUMMAGATTA</a>
+                        </td><td align="center">915</td><td align="center">508</td><td align="center">226</td><td align="center">282</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl25_lblRowNumber">24</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl25_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl25$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">BRAMHASAMUDRAM</a>
+                        </td><td align="center">873</td><td align="center">861</td><td align="center">109</td><td align="center">752</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl26_lblRowNumber">25</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl26_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl26$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KALYANDURG</a>
+                        </td><td align="center">1018</td><td align="center">1018</td><td align="center">319</td><td align="center">699</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl27_lblRowNumber">26</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl27_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl27$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">ATMAKUR</a>
+                        </td><td align="center">887</td><td align="center">612</td><td align="center">438</td><td align="center">174</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl28_lblRowNumber">27</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl28_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl28$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KUDERU</a>
+                        </td><td align="center">823</td><td align="center">519</td><td align="center">251</td><td align="center">268</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl29_lblRowNumber">28</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl29_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl29$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">GARLADINNE</a>
+                        </td><td align="center">1183</td><td align="center">1118</td><td align="center">643</td><td align="center">475</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl30_lblRowNumber">29</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl30_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl30$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">SINGANAMALA</a>
+                        </td><td align="center">916</td><td align="center">800</td><td align="center">574</td><td align="center">226</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl31_lblRowNumber">30</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl31_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl31$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">PUTLUR</a>
+                        </td><td align="center">795</td><td align="center">712</td><td align="center">497</td><td align="center">215</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl32_lblRowNumber">31</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl32_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl32$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">YELLANUR</a>
+                        </td><td align="center">796</td><td align="center">784</td><td align="center">382</td><td align="center">402</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl33_lblRowNumber">32</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl33_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl33$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">NARPALA</a>
+                        </td><td align="center">1337</td><td align="center">1138</td><td align="center">516</td><td align="center">622</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl34_lblRowNumber">33</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl34_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl34$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">BUKKARAYASAMUDRAM</a>
+                        </td><td align="center">1603</td><td align="center">1502</td><td align="center">775</td><td align="center">727</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl35_lblRowNumber">34</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl35_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl35$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">ANANTHAPURAM RURAL</a>
+                        </td><td align="center">3194</td><td align="center">1982</td><td align="center">1326</td><td align="center">656</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl36_lblRowNumber">35</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl36_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl36$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">RAPTHADU</a>
+                        </td><td align="center">975</td><td align="center">841</td><td align="center">744</td><td align="center">97</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl37_lblRowNumber">36</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl37_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl37$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">SETTUR</a>
+                        </td><td align="center">952</td><td align="center">901</td><td align="center">214</td><td align="center">687</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl38_lblRowNumber">37</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl38_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl38$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KUNDURPI</a>
+                        </td><td align="center">1069</td><td align="center">931</td><td align="center">451</td><td align="center">480</td>
+		</tr><tr>
+			<td align="center">
+                                        <span id="ctl00_ContentPlaceHolder1_GridView2_ctl39_lblRowNumber">38</span>
+                                    </td><td align="center">
+                            <a id="ctl00_ContentPlaceHolder1_GridView2_ctl39_LinkButton2" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$GridView2$ctl39$LinkButton2&#39;,&#39;&#39;)" style="color:Blue;">KAMBADUR</a>
+                        </td><td align="center">1099</td><td align="center">1070</td><td align="center">760</td><td align="center">310</td>
+		</tr><tr align="center" style="color:White;background-color:#006699;font-weight:bold;">
+			<td style="background-color:#006699;">&nbsp;</td><td style="background-color:#006699;">Total</td><td style="background-color:#006699;">47656</td><td style="background-color:#006699;">40011</td><td style="background-color:#006699;">22490</td><td style="background-color:#006699;">17521</td>
+		</tr>
+	</table>
+</div>
+                      
+					
+						 					</div>
+
+                                
+
+
+                                </div>
+  
+  
+ 
+
+          </div>
+            
+            
+			
+        </div>
+        
+        
+        
+       <br><br>
+    </div>
+
+
+                   
+  <div class="container" style="padding:0px;margin:0px auto;margin-top:-20px;">
+<div class="row" style="padding:0px;margin:0px;">
+    
+
+    <!--/.footer-->
+    <!--<div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <h2 style="font-size:14px;text-align: center; color: #fff; line-height:22px;">Contents on this website are owned, updated and managed by the Panchayats and State Panchayati Raj Department as a part of e-Panchayat<br> MMP of Ministry of Panchayati Raj. Site is technically designed, hosted and maintained by NIC National Informatics Centre (NIC)</h2> <br>
+                <ul class="list-inline">
+					<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#quickModal" id="One" onclick="allPolicies(this.id)">Terms &amp; Conditions</a></li>
+					<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#quickModal" onclick="allPolicies(this.id)" id="Two">Privacy Policy</a></li>
+					
+					 <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#quickModal" id="Three" onclick="allPolicies(this.id)">Web policy</a></li>
+					<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#quickModal" onclick="allPolicies(this.id)" id="Four" alt="Contact us">Contact us</a></li>
+					<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#quickModal" onclick="allPolicies(this.id)" id="Five" alt="Web Information Manager">Web Information Manager</a></li>
+				</ul>
+            </div>
+         
+        </div>
+        
+    </div>-->
+   
+    <div class="footer-bottom w-100">
+        <div class="container-fluid">
+		<div class="row">
+			 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> <p>GV/WV and VS/WS Department Rights Reserved © 2021</p></div>
+			 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							
+							
+				<p align="right">Designed & Developed By PROGMENT</p>				
+				 			
+							
+			 </div>
+			
+			  
+			 
+		</div>
+           
+           
+        </div>
+    </div>
+ 
+
+</div>
+</div>
+	
+	
+	
+</div>
+</div>
+  
+ <div id="alertmsgonload" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="margin-top:50px;">
+  
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="ebcjs/bootstrap.min.js"></script>
+
+<script src="ebcjs/translate.js" type="text/javascript"></script>
+<script src="ebcjs/jquery.slimscroll.min.js"></script>
+<script src="ebcjs/jquery.bxslider.js"></script>
+
+
+           
+	<script>
+	
+	function redirectUrl(url)
+	{
+	//window.location.href=url;
+	
+	window.open(url,'_blank');
+	}
+	
+		$(function(){
+			$('.inner-content-div').slimScroll({
+				height: '240px',
+				color: '#0b509e',
+			});
+			$('.inner-content-blocks').slimScroll({
+				height: '75px',
+				color: '#f3f3f3',
+			});
+		});
+</script>
+<script>
+function blink_text() {
+    $('.blink').fadeOut(500);
+    $('.blink').fadeIn(500);
+	 
+}
+setInterval(blink_text, 1000);
+</script>
+ <script>
+        function translateLanguage(lang) {
+
+            var $frame = $('.goog-te-menu-frame:first');
+            if (!$frame.size()) {
+                alert("Error: Could not find Google translate frame.");
+                return false;
+            }
+            $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+            return false;
+        }
+    </script>
+<script src="ebcjs/jquery.fullscreenCycler.js"></script>
+<!-- <script language="javascript" type="text/javascript">
+  (function($) {
+    var i = new Array("images/BG1.png","images/BG6.png","images/BG5.png","images/BG3.png","images/BG4.png","images/BG2.png");
+
+    $('#fsCycler').fullscreenSlider({
+      speed:1,
+      transitionSpeed: 2,
+      backgroundColor: "transparent",
+      images: i
+    });
+  })(jQuery);
+  </script> -->
+
+<script type="text/javascript">
+	 $(document).ready(function() { 
+	  var originalSize = $('div').css('font-size');
+
+		$('#incfont').click(function(){	   
+	    curSize= parseInt($('.font-inc-dec').css('font-size')) + 1;
+		if(curSize<=15)
+        $('.font-inc-dec').css('font-size', curSize);
+        });  
+		$('#decfont').click(function(){	   
+        curSize= parseInt($('.font-inc-dec').css('font-size')) - 1;
+		if(curSize>=12)
+	    $('.font-inc-dec').css('font-size', curSize);
+        }); 
+		$('#fontreset').click(function(){	   
+    //    curSize= parseInt($('.font-inc-dec').css('font-size')) - 1;
+		$('.font-inc-dec').css('font-size', originalSize); 
+		}); 
+	});
+</script>
+<script>
+    // You can also use "$(window).load(function() {"
+    $(document).ready(function(){
+  $('.bxslider').bxSlider({
+  auto: true,
+  autoControls: true
+});
+});
+$(function(){
+  $('.marquee').marquee({
+
+  //If you wish to always animate using jQuery
+  allowCss3Support: true,
+
+  css3easing: 'linear',
+
+  //requires jQuery easing plugin. Default is 'linear'
+  easing: 'linear',
+
+  //pause time before the next animation turn in milliseconds
+  delayBeforeStart: 1000,
+  //'left', 'right', 'up' or 'down'
+  direction: 'left',
+
+  //true or false - should the marquee be duplicated to show an effect of continues flow
+  duplicated: false,
+
+  //speed in milliseconds of the marquee in milliseconds
+  duration: 15000,
+
+  //gap in pixels between the tickers
+  gap: 20,
+
+  //on cycle pause the marquee
+  pauseOnCycle: true,
+
+  
+  pauseOnHover: true,
+
+  //the marquee is visible initially positioned next to the border towards it will be moving
+  startVisible: false
+  
+  });
+});
+
+/*********************************************************************************************************************/
+
+
+/*********************************************************************************************************************/
+
+$(document).ready(function(){ 
+    var touch 	= $('#touch-menu');
+	var menu 	= $('.menu');
+
+	$(touch).on('click', function(e) {
+		e.preventDefault();
+		menu.slideToggle();
+	});
+	
+	$(window).resize(function(){
+		var w = $(window).width();
+		if(w > 767 && menu.is(':hidden')) {
+			menu.removeAttr('style');
+		}
+	});
+	
+});
+
+
+  </script>
+  <script src="ebcjs/super-treadmill.min.js"></script>
+  <script type="text/javascript">
+			$(document).ready(function() {
+				$('#mytreadmill').startTreadmill({
+					runAfterPageLoad: true,
+            				direction: "up",
+            				speed: "medium",
+            				viewable: 1,
+            				pause: true
+
+				});
+				$(".js-accordion-title:first-of-type").click();
+				$("#3_accordion").click();
+			});
+		</script>
+		<script src="ebcjs/owl.carousel.min.js"></script>
+		<script>
+            $(document).ready(function() {
+              $('.owl-carousel').owlCarousel({
+			    lazyLoad: true,
+                loop: true,
+				nav: false,
+				singleItem:true,
+				autoplay:true,
+				autoplayHoverPause:true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: true
+                  },
+                  600: {
+                    items: 3,
+                    nav: false
+                  },
+                  1000: {
+                    items: 4,
+                    nav: true,
+                    loop: false,
+                    margin: 20
+                  }
+                }
+              })
+            })
+          </script>
+		  
+		  
+
+  <script>
+  
+$(".btn").click(function() {
+  
+   var lable = $(".btn").text().trim();
+
+   if(lable == "Hide") {
+     $(".btn").text("Show");
+     $(".myText").hide();
+   }
+   else {
+     $(".btn").text("Hide");
+     $(".myText").show();
+   }
+    
+  </script>
+  <script>
+ $.fn.extend({
+    treed: function (o) {
+      
+      var openedClass = 'glyphicon-minus-sign';
+      var closedClass = 'glyphicon-plus-sign';
+      
+      if (typeof o != 'undefined'){
+        if (typeof o.openedClass != 'undefined'){
+        openedClass = o.openedClass;
+        }
+        if (typeof o.closedClass != 'undefined'){
+        closedClass = o.closedClass;
+        }
+      };
+      
+        //initialize each of the top levels
+        var tree = $(this);
+        tree.addClass("tree");
+        tree.find('li').has("ul").each(function () {
+            var branch = $(this); //li with children ul
+            branch.prepend("<i class='indicator glyphicon " + closedClass + "'></i>");
+            branch.addClass('branch');
+            branch.on('click', function (e) {
+                if (this == e.target) {
+                    var icon = $(this).children('i:first');
+                    icon.toggleClass(openedClass + " " + closedClass);
+                    $(this).children().children().toggle();
+                }
+            })
+            branch.children().children().toggle();
+        });
+        //fire event from the dynamically added icon
+      tree.find('.branch .indicator').each(function(){
+        $(this).on('click', function () {
+            $(this).closest('li').click();
+        });
+      });
+        //fire event to open branch if the li contains an anchor instead of text
+        tree.find('.branch>a').each(function () {
+            $(this).on('click', function (e) {
+                $(this).closest('li').click();
+                e.preventDefault();
+            });
+        });
+        //fire event to open branch if the li contains a button instead of text
+        tree.find('.branch>button').each(function () {
+            $(this).on('click', function (e) {
+                $(this).closest('li').click();
+                e.preventDefault();
+            });
+        });
+    }
+});
+
+//Initialization of treeviews
+
+$('.tree1').treed();
+
+$('.tree2').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
+
+$('.tree3').treed({openedClass:'glyphicon-chevron-right', closedClass:'glyphicon-chevron-down'});
+
+     </script>
+     
+     <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+	
+ 	
+
+     
+    </div>
+  </form>
+</body>
+</html>
