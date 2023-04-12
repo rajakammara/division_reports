@@ -44,12 +44,20 @@ Technical Issues
         <td>{{$item->service_name}}</td>
         <td>{{$item->remarks}}</td>
         <td>
-
-          <form action="{{route('issue.destroy',$item->id)}}" method="POST">
+          <div class="d-flex">
+            <div class="col m-2">
+              <a href="#" class="btn btn-primary btn-sm"><i class="bi-thin bi-pencil"></i></a>
+            </div>
+            <div class="col m-2">
+              <form action="{{route('issue.destroy',$item->id)}}" method="POST">
             @csrf
             @method("DELETE")
             <button class="btn btn-danger btn-sm" type="submit"><i class="bi bi-trash"></i></button>
           </form>
+            </div>
+          
+          </div>
+          
         </td>
       </tr>
       @endforeach

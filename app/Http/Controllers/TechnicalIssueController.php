@@ -138,30 +138,85 @@ class TechnicalIssueController extends Controller
 
         ];
        // dd($postdata);
-        $request = $client->request('POST',$url,['form_params'=>$postdata]);
+        $request = $client->request('POST',$url,['form_params'=>$postdata]);        
         
-        dd($request->getBody()->getContents());
         $doc->loadHTML($request->getBody()->getContents());
-        //$table = $doc->getElementById('ctl00_ContentPlaceHolder1_GridView2');
-        $tables = $doc->getElementsByTagName('table'); 
-        dd($doc);
-        $rows = $doc->getElementsByTagName('td');
-       // dd($rows);
-       $data=[];
-       foreach ($rows as $row) {
-        $cols = $row->getElementsByTagName('td');
-        dd($row);
-        echo 'Sno: '.$cols->item(0)->nodeValue.'<br />'; 
-        echo 'Mandal: '.$cols->item(1)->nodeValue.'<br />'; 
-        $temp=array('Sno'=>$cols->item(0)->nodeValue,'Mandal'=>$cols->item(1)->nodeValue);
-        array_push($data,$temp);
-    }
-        return view('temp',compact('data'));
+        $tables = $doc->getElementsByTagName('table');
+        $rows = $tables->item(0)->getElementsByTagName('tr'); 
+
+        $data=[];
+        foreach ($rows as $row) {
+
+            $cols = $row->getElementsByTagName('td');             
+            if(is_object($cols ->item(0))) {
+            $temp = [];
+            $temp['sno'] = $cols[0]->nodeValue;
+            $temp['mandal'] = $cols[1]->nodeValue;
+            $temp['total_students'] = $cols[2]->nodeValue;
+            $temp['updated_students'] = $cols[3]->nodeValue;
+            $temp['having_old_cert'] = $cols[4]->nodeValue;
+            $temp['applied_new'] = $cols[5]->nodeValue;
+            $temp['balance'] = $cols[2]->nodeValue - $cols[3]->nodeValue;
+            $temp['percentage'] = number_format(100 * ($cols[3]->nodeValue/$cols[2]->nodeValue),2);
+            //var_dump($cols[0]->nodeValue);
+            array_push($data,$temp);
+            }
+        }
+        $div_mandals=["ANANTAPUR (URBAN)","TADIPATRI (URBAN)","TADIPARTRI","PEDDAPAPPUR","ATMAKUR","KUDERU","GARLADINNE","SINGANAMALA","PUTLUR","YELLANUR","NARPALA","BUKKARAYASAMUDRAM","ANANTHAPURAM RURAL","RAPTHADU"];
+        $data=array_filter($data,function($var) use($div_mandals){
+            foreach ($div_mandals as $value) {
+                //var_dump($value);
+                //var_dump($var);
+                if(trim($var['mandal'])==$value){
+                    return $var;
+                }
+            }
+        });
+        $percentage  = array_column($data, 'percentage');
+        array_multisort($percentage, SORT_ASC, $data);
+        return view('castereport',compact('data'));
     }
 
     public function getLocalCasteIncomeReport(){
-        $myfile = fopen("tempdata.txt","r") or die("Unable to open file");
-        echo fread($myfile,filesize("tempdata.txt"));
-        fclose($myfile);
+        $doc = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $doc->preserveWhiteSpace = false;
+        $doc->loadHTMLFile("tempdata.html");
+        $tables = $doc->getElementsByTagName('table');
+        $rows = $tables->item(0)->getElementsByTagName('tr'); 
+        
+
+        $data=[];
+        foreach ($rows as $row) {
+
+            $cols = $row->getElementsByTagName('td');             
+            if(is_object($cols ->item(0))) {
+            $temp = [];
+            $temp['sno'] = $cols[0]->nodeValue;
+            $temp['mandal'] = $cols[1]->nodeValue;
+            $temp['total_students'] = $cols[2]->nodeValue;
+            $temp['updated_students'] = $cols[3]->nodeValue;
+            $temp['having_old_cert'] = $cols[4]->nodeValue;
+            $temp['applied_new'] = $cols[5]->nodeValue;
+            $temp['balance'] = $cols[2]->nodeValue - $cols[3]->nodeValue;
+            $temp['percentage'] = number_format(100 * ($cols[3]->nodeValue/$cols[2]->nodeValue),2);
+            //var_dump($cols[0]->nodeValue);
+            array_push($data,$temp);
+            }
+        }
+        $div_mandals=["ANANTAPUR (URBAN)","TADIPATRI (URBAN)","TADIPARTRI","PEDDAPAPPUR","ATMAKUR","KUDERU","GARLADINNE","SINGANAMALA","PUTLUR","YELLANUR","NARPALA","BUKKARAYASAMUDRAM","ANANTHAPURAM RURAL","RAPTHADU"];
+        $data=array_filter($data,function($var) use($div_mandals){
+            foreach ($div_mandals as $value) {
+                //var_dump($value);
+                //var_dump($var);
+                if(trim($var['mandal'])==$value){
+                    return $var;
+                }
+            }
+        });
+        $percentage  = array_column($data, 'percentage');
+        array_multisort($percentage, SORT_ASC, $data);
+
+        return view('castereport',compact('data'));
     }
 }

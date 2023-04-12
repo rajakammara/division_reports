@@ -48,6 +48,14 @@
               {{ __('Logout') }}
             </a>
           </li>
+          <li class="nav-item">
+            @can('isAdmin')
+            <a class="nav-link" aria-current="page" href="#">Admin</a>
+            @else
+            <a class="nav-link" aria-current="page" href="#">User</a>
+            @endcan
+            
+          </li>
         </ul>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
