@@ -31,6 +31,8 @@ Technical Issues
         <th>Request Id</th>
         <th>Service</th>
         <th>Remarks</th>
+        <th>Pending Reason</th>
+        <th>Pending With</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -43,6 +45,9 @@ Technical Issues
         <td>{{$item->request_id}}</td>
         <td>{{$item->service_name}}</td>
         <td>{{$item->remarks}}</td>
+
+        <td>{{$item->pending_reason}}</td>
+        <td>{{$item->pending_with}}</td>
         <td>
           <div class="d-flex">
             <div class="col m-2">
@@ -52,7 +57,9 @@ Technical Issues
               data-mandal="{{$item->mandal_name}}"
               data-requestid="{{$item->request_id}}"
               data-servicename="{{$item->service_name}}"
-              data-remarks="{{$item->remarks}}" 
+              data-remarks="{{$item->remarks}}"
+              data-pending_with="{{$item->pending_with}}"
+              data-pending_reason="{{$item->pending_reason}}" 
               onclick="showModal(this)" id="modalbutton"><i class="bi-thin bi-pencil"></i></button>
             </div>
             <div class="col m-2">
@@ -97,57 +104,46 @@ Technical Issues
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <legend class="col-form-label fw-bold">Pending Reason</legend>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pending_reason" id="inlineRadio1" value="Pending">
-                                <label class="form-check-label" for="inlineRadio1">Pending</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pending_reason" id="inlineRadio2" value="Technical Issue">
-                                <label class="form-check-label" for="inlineRadio2">Technical Issue</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pending_reason" id="inlineRadio3" value="Pending in Other Mandal">
-                                <label class="form-check-label" for="inlineRadio3">Pending in Other Mandal</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pending_reason" id="inlineRadio3" value="Pending in Other District">
-                                <label class="form-check-label" for="inlineRadio3">Pending in Other District</label>
-                            </div>
-                        </div>
-                        <div>
-                            <legend class="col-form-label fw-bold">Pending With</legend>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="tahsildar">
-                                <label class="form-check-label" for="inlineRadio3">Tahsildar</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="rdo">
-                                <label class="form-check-label" for="inlineRadio3">RDO</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="jc">
-                                <label class="form-check-label" for="inlineRadio2">JC</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="collector">
-                                <label class="form-check-label" for="inlineRadio1">Collector</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="others">
-                                <label class="form-check-label" for="inlineRadio3">Others</label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="portal" class="form-label fw-bold">Pending Related Portal</label>
-                            <select id="portal" class="form-select" name="portal">
-                                <option value="">Choose Portal</option>
-                                <option value="apseva">Apseva</option>
-                                <option value="webland">Webland</option>
-                                <option value="meeseva">Meeseva</option>
-                            </select>
-                        </div>
+                        {{-- row --}}
+                  <div class="row">
+                   
+                  <div class="mb-3 col-auto">
+                    <label for="pending_reason" class="form-label fw-semibold">Pending Reason:</label>
+                    <select class="form-select" id="pending_reason" name="pending_reason" required>
+                      <option selected value="" disabled>Choose pending reasons</option>
+                      <option value="Pending Within Mandal">Pending Within Mandal</option>
+                      <option value="Technical Issue">Technical Issue</option>
+                      <option value="Pending in Other Mandal">Pending in Other Mandal</option>
+                      <option value="Pending in Other District">Pending in Other District</option>
+                      <option value="Pending in Others Login">Pending in Others Login</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3 col-auto">
+                    <label for="portal" class="form-label fw-semibold">Portal:</label>
+                    <select class="form-select" id="portal" name="portal" required>
+                      <option selected value="" disabled>Choose portal related to issue</option>
+                      <option value="Webland">Webland</option>
+                      <option value="Apseva">Apseva</option>
+                      <option value="Meeseva">Meeseva</option>
+                    </select>
+                  </div>
+                  <div class="mb-3 col-auto">
+                    <label for="pending_with" class="form-label fw-semibold">Pending with:</label>
+                    <select class="form-select" id="pending_with"  name="pending_with" required>
+                      <option selected value="" disabled>Pending with</option>
+                      <option value="Tahsildar">Tahsildar</option>
+                      <option value="RDO">RDO</option>
+                      <option value="JC">JC</option>
+                      <option value="Collector">Collector</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+                  
+                  </div> 
+                  {{-- row end --}}
+                        
+                        
                         <div class="mb-3">
                             <label for="pending_remarks" class="form-label">Pending Remarks</label>
                             <textarea class="form-control" id="pending_remarks" rows="3" placeholder="Enter pending description"></textarea>
@@ -179,6 +175,9 @@ Technical Issues
     document.getElementById("mandal_name").value=element.dataset.mandal;
     document.getElementById("requestid").value=element.dataset.requestid;
     document.getElementById("pending_remarks").value=element.dataset.remarks;
+    document.getElementById("pending_with").value=element.dataset.pending_with;
+    document.getElementById("pending_reason").value=element.dataset.pending_reason;
+    document.getElementById("portal").value=element.dataset.portal;
     //console.log(element.dataset.remarks);
     
     myModal.show();
@@ -187,11 +186,18 @@ Technical Issues
   const formelement = document.getElementById('myform');
   formelement.addEventListener('submit',event => {
   event.preventDefault();
+  
   let updated_remarks = document.getElementById('pending_remarks').value;
+  let pending_reason = document.getElementById("pending_reason").value;
+  let portal=document.getElementById("portal").value;
+  let pending_with=document.getElementById("pending_with").value;
   // actual logic, e.g. validate the form
   let data = {
     id: requestid,
-    remarks:updated_remarks
+    remarks:updated_remarks,
+    pending_reason : pending_reason,
+    pending_with:pending_with,
+    portal:portal,
   }
   let config = {
     headers:{

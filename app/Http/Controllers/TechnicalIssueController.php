@@ -18,7 +18,7 @@ class TechnicalIssueController extends Controller
      */
     public function index()
     {
-        $technicalIssues = DB::select("SELECT t.id,t.portal,t.mandal_name,t.request_id,t.service_name,t.remarks,t.description FROM technical_issues t inner join apseva_apps a on t.request_id=a.app_number order by t.mandal_name");
+        $technicalIssues = DB::select("SELECT t.id,t.portal,t.mandal_name,t.request_id,t.service_name,t.remarks,t.description,t.pending_with,t.pending_reason FROM technical_issues t inner join apseva_apps a on t.request_id=a.app_number order by t.mandal_name");
         return view('technical_issues',compact('technicalIssues'));
     }
 
@@ -48,12 +48,16 @@ class TechnicalIssueController extends Controller
         'app_number' => 'required',
         'portal' => 'required',
         'remarks' => 'required',
+        'pending_with'=>'required',
+        'pending_reason'=>'required'
     ],['appid.required' => 'Application Id is missing',
         'service_name.required'=>'Service name is missing',
         'mandal_name.required'=>'Mandal name is missing',
         'app_number.required'=>"Request number is missing",
         'portal.required'=>"Please select issue portal",
-        'remarks.required'=>"Please enter Issue Remarks"
+        'remarks.required'=>"Please enter Issue Remarks",
+        'pending_with.required'=>"Please select request pending with",
+        'pending_reason.required'=>"Please select pending reason",
     ]);
         $technicalIssue = new TechnicalIssue();
         $technicalIssue->portal = $request->get('portal');
@@ -61,6 +65,8 @@ class TechnicalIssueController extends Controller
         $technicalIssue->request_id = $request->get('app_number');
         $technicalIssue->service_name = $request->get('service_name');
         $technicalIssue->remarks = $request->get('remarks');
+        $technicalIssue->pending_reason = $request->get('pending_reason');
+        $technicalIssue->pending_with = $request->get('pending_with');
         $technicalIssue->save();
         return redirect('/apseva_linelist')->with('status', 'Remarks Updated successfully');
     }
@@ -96,9 +102,12 @@ class TechnicalIssueController extends Controller
      */
     public function update(Request $request)
     {
-
+        //return response()->json($request->all());
         $technicalIssue = TechnicalIssue::find($request->id);
         $technicalIssue->remarks = $request->remarks;
+        $technicalIssue->pending_with = $request->pending_with;
+        $technicalIssue->pending_reason = $request->pending_reason;
+        $technicalIssue->portal = $request->portal;
         $technicalIssue->save();
         return response()->json(['success'=>'Updated successfully']);
     }
@@ -113,7 +122,7 @@ class TechnicalIssueController extends Controller
     {
         $technicalIssue = TechnicalIssue::find($issue);
         $technicalIssue->delete();
-         return redirect('/technical_issues')->with('status', 'Deleted successfully');
+         return back()->with('status', 'Deleted successfully');
         
     }
 

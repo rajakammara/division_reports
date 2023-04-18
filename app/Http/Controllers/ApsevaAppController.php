@@ -144,7 +144,7 @@ class ApsevaAppController extends Controller
 
     //apseva linelist
     public function apseva_linelist(){
-        $query= 'SELECT a.id,a.new_mandal_name,a.sec_name,a.service_name,a.app_number,a.sla_status,t.remarks FROM apseva_apps a left join technical_issues t on a.app_number=t.request_id WHERE a.department="Revenue" and a.div_name="ATP" order by a.new_mandal_name';
+        $query= 'SELECT a.id,a.new_mandal_name,a.sec_name,a.service_name,a.app_number,a.sla_status,t.remarks,t.id as "issueid",t.pending_reason,t.pending_with,t.portal,t.mandal_name,t.request_id FROM apseva_apps a left join technical_issues t on a.app_number=t.request_id WHERE a.department="Revenue" and a.div_name="ATP" order by a.new_mandal_name';
         $apseva_linelist=DB::select($query);
         return view('apseva_linelist',compact('apseva_linelist'));
     }
