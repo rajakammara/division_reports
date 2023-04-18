@@ -132,6 +132,7 @@ Apseva Linelist
                       <option value="JC">JC</option>
                       <option value="Collector">Collector</option>
                       <option value="Others">Others</option>
+                      <option value="Technical Issue">Technical Issue</option>
                     </select>
                   </div>
                   
