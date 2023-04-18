@@ -96,10 +96,9 @@ class TechnicalIssueController extends Controller
      */
     public function update(Request $request)
     {
-        
-        $technicalIssue = TechnicalIssue::find($request->id);
-        $technicalIssue->remarks = $request->remarks; 
 
+        $technicalIssue = TechnicalIssue::find($request->id);
+        $technicalIssue->remarks = $request->remarks;
         $technicalIssue->save();
         return response()->json(['success'=>'Updated successfully']);
     }

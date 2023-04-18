@@ -172,6 +172,7 @@ Technical Issues
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script type="text/javascript">
     var remarks,requestid;
+    var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
   function showModal(element){ 
     requestid = element.dataset.id;
     remarks = element.dataset.remarks;   
@@ -179,7 +180,7 @@ Technical Issues
     document.getElementById("requestid").value=element.dataset.requestid;
     document.getElementById("pending_remarks").value=element.dataset.remarks;
     //console.log(element.dataset.remarks);
-    var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
+    
     myModal.show();
 
   }
@@ -199,7 +200,9 @@ Technical Issues
   }
   axios.post('/update_issue', data,config)
   .then(function (response) {
-    console.log(response);
+    myModal.hide();
+    window.location.reload();
+    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
