@@ -77,7 +77,7 @@ Technical Issues
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Form start -->
-                <form>
+                <form id="myform">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Application Pending Remarks</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -92,8 +92,8 @@ Technical Issues
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="disabledTextInput" class="form-label">Application Number</label>
-                                    <input type="text" readonly value="IC230328020068" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                                    <label for="requestid" class="form-label">Application Number</label>
+                                    <input type="text" readonly value="IC230328020068" id="requestid" class="form-control" placeholder="Disabled input">
                                 </div>
                             </div>
                         </div>
@@ -155,7 +155,7 @@ Technical Issues
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit"  class="btn btn-primary">Submit</button>
                     </div>
                 </form>
                 <!-- /Form end -->
@@ -169,16 +169,43 @@ Technical Issues
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 @endpush
 @push('scripts')
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script type="text/javascript">
-  function showModal(element){
-    
-    var mandal_name=document.getElementById("mandal_name");
-    mandal_name.val=element.dataset.request_id;
-    console.log(element.dataset.id);
+    var remarks,requestid;
+  function showModal(element){ 
+    requestid = element.dataset.id;
+    remarks = element.dataset.remarks;   
+    document.getElementById("mandal_name").value=element.dataset.mandal;
+    document.getElementById("requestid").value=element.dataset.requestid;
+    document.getElementById("pending_remarks").value=element.dataset.remarks;
+    //console.log(element.dataset.remarks);
     var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
     myModal.show();
 
   }
+  const formelement = document.getElementById('myform');
+  formelement.addEventListener('submit',event => {
+  event.preventDefault();
+  let updated_remarks = document.getElementById('pending_remarks').value;
+  // actual logic, e.g. validate the form
+  let data = {
+    id: requestid,
+    remarks:updated_remarks
+  }
+  let config = {
+    headers:{
+        'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+  }
+  axios.post('/update_issue', data,config)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  console.log('Form submission cancelled.');
+});
 </script>
 
 @endpush

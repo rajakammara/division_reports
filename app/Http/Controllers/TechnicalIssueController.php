@@ -94,9 +94,14 @@ class TechnicalIssueController extends Controller
      * @param  \App\Models\TechnicalIssue  $technicalIssue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TechnicalIssue $technicalIssue)
+    public function update(Request $request)
     {
-        //
+        
+        $technicalIssue = TechnicalIssue::find($request->id);
+        $technicalIssue->remarks = $request->remarks; 
+
+        $technicalIssue->save();
+        return response()->json(['success'=>'Updated successfully']);
     }
 
     /**
