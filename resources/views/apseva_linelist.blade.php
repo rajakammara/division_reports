@@ -207,7 +207,7 @@ Apseva Linelist
                    
                   <div class="mb-3 col-auto">
                     <label for="pending_reason" class="form-label fw-semibold">Pending Reason:</label>
-                    <select class="form-select" name="pending_reason" id="pending_reason" required>
+                    <select class="form-select" name="edit_pending_reason" id="edit_pending_reason" required>
                       <option selected value="" disabled>Choose pending reasons</option>
                       <option value="Pending Within Mandal">Pending Within Mandal</option>
                       <option value="Technical Issue">Technical Issue</option>
@@ -328,7 +328,7 @@ Apseva Linelist
     document.getElementById("mandal_name_edit").value=element.dataset.mandal;
     document.getElementById("requestid").value=element.dataset.requestid;
     document.getElementById("pending_remarks").value=element.dataset.remarks;
-    document.getElementById("pending_reason").value=element.dataset.pending_reason;
+    document.getElementById("edit_pending_reason").value=element.dataset.pending_reason;
     document.getElementById("portal").value=element.dataset.portal;
     document.getElementById("pending_with").value=element.dataset.pending_with;
     var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
