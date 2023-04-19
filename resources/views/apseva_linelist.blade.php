@@ -59,19 +59,41 @@ Apseva Linelist
         @if (is_null($item->remarks))
         <div class="d-flex justify-content-between">
           <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
-          data-bs-target="#issueModal{{$loop->iteration}}" id="add_button"
-          data-id="{{$item->id}}"
-          data-servicename="{{$item->service_name}}"
+        <button type="button" class="btn btn-primary m-1 btn-sm"  id="add_button"
+          data-id="{{$item->id}}" data-servicename="{{$item->service_name}}" data-mandal="{{$item->new_mandal_name}}" data-requestid="{{$item->app_number}}" onclick="showaddmodal(this)" 
           >
-          <i class="bi bi-plus-circle"></i>
+          <i class="bi bi-plus"></i>
+        </button>       
+        </div>      
+        
+      </td>
+      @else
+      <div class="d-flex">       
+      
+      <button type="button" class="btn btn-warning m-1 btn-sm"  id="edit_button" onclick="showeditmodal(this)" data-issueid="{{$item->issueid}}"  data-portal="{{$item->portal}}"
+              data-mandal="{{$item->mandal_name}}"  data-requestid="{{$item->request_id}}"
+              data-pending_with="{{$item->pending_with}}" data-pending_reason="{{$item->pending_reason}}" data-remarks="{{$item->remarks}}">
+          <i class="bi bi-pencil-square"></i>
         </button>
-        
+        <form action="/{{$item->issueid}}/delete" method="POST">
+            @csrf
+            @method("DELETE")
+        <button type="submit" class="btn btn-danger m-1 btn-sm" id="delete_button">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </form>
+      </div>
+      @endif
+      @endcan
 
-        </div>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="issueModal{{$loop->iteration}}" tabindex="-1" aria-labelledby="issueModalLabel"
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+
+{{-- Add modal --}}
+<!-- Modal -->
+        <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="issueModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -80,22 +102,20 @@ Apseva Linelist
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form action="{{route('create_issue')}}" method="POST">
-                  @csrf
-                  <input type="hidden" name="appid" value="{{$item->id}}">
-                  <input type="hidden" name="service_name" value="{{$item->service_name}}">
+                <form action="#" id="add_form" method="POST">
+                  
                   <div class="row">
                     
                   {{-- row --}}
                   <div class="mb-3 col-6">
                     <label for="mandal_name" class="form-label fw-semibold">Mandal:</label>
-                    <input readonly class="form-control" id="mandal_name" name="mandal_name"
-                      value="{{$item->new_mandal_name}}">
+                    <input readonly class="form-control" id="mandal_name_add" name="mandal_name_add"
+                      >
                   </div>
                   <div class="mb-3 col-6">
-                    <label for="app_number" class="form-label fw-semibold">Application Number:</label>
-                    <input readonly class="form-control" id="app_number" name="app_number"
-                      value="{{$item->app_number}}">
+                    <label for="app_number_add" class="form-label fw-semibold">Application Number:</label>
+                    <input readonly class="form-control" id="app_number_add" name="app_number"
+                      >
                   </div>
                   </div>
                   {{-- row end --}}
@@ -103,8 +123,8 @@ Apseva Linelist
                   <div class="row">
                    
                   <div class="mb-3 col-auto">
-                    <label for="pending_reason" class="form-label fw-semibold">Pending Reason:</label>
-                    <select class="form-select" name="pending_reason" required>
+                    <label for="add_pending_reason" class="form-label fw-semibold">Pending Reason:</label>
+                    <select class="form-select" name="add_pending_reason" id="add_pending_reason" required>
                       <option selected value="" disabled>Choose pending reasons</option>
                       <option value="Pending Within Mandal">Pending Within Mandal</option>
                       <option value="Technical Issue">Technical Issue</option>
@@ -115,8 +135,8 @@ Apseva Linelist
                   </div>
 
                   <div class="mb-3 col-auto">
-                    <label for="portal" class="form-label fw-semibold">Portal:</label>
-                    <select class="form-select" name="portal" required>
+                    <label for="add_portal" class="form-label fw-semibold">Portal:</label>
+                    <select class="form-select" name="add_portal" id="add_portal" required>
                       <option selected value="" disabled>Choose portal related to issue</option>
                       <option value="Webland">Webland</option>
                       <option value="Apseva">Apseva</option>
@@ -125,7 +145,7 @@ Apseva Linelist
                   </div>
                   <div class="mb-3 col-auto">
                     <label for="pending_with" class="form-label fw-semibold">Pending with:</label>
-                    <select class="form-select" name="pending_with" required>
+                    <select class="form-select" name="add_pending_with" id="add_pending_with" required>
                       <option selected value="" disabled>Pending with</option>
                       <option value="Tahsildar">Tahsildar</option>
                       <option value="RDO">RDO</option>
@@ -141,8 +161,7 @@ Apseva Linelist
 
                   <div class="mb-1">
                     <label for="description" class="mb-1 fw-semibold">Pending Description</label>
-                    <textarea class="form-control" placeholder="Enter Issue Description" id="description"
-                      rows="2" name="remarks" required></textarea>
+                    <textarea class="form-control" placeholder="Enter Issue Description"  rows="2" name="add_remarks" id="add_remarks" required></textarea>
                   </div>
 
               </div>
@@ -154,37 +173,7 @@ Apseva Linelist
             </div>
           </div>
         </div>
-      </td>
-      @else
-      <div class="d-flex">       
-      
-      <button type="button" class="btn btn-warning m-1"  id="edit_button" onclick="showeditmodal(this)"
-              data-issueid="{{$item->issueid}}" 
-              data-portal="{{$item->portal}}"
-              data-mandal="{{$item->mandal_name}}"
-              data-requestid="{{$item->request_id}}"
-              data-pending_with="{{$item->pending_with}}"
-              data-pending_reason="{{$item->pending_reason}}"
-              data-remarks="{{$item->remarks}}"
-
-      >
-          <i class="bi bi-pencil-square"></i>
-        </button>
-        <form action="/{{$item->issueid}}/delete" method="POST">
-            @csrf
-            @method("DELETE")
-        <button type="submit" class="btn btn-danger m-1" id="delete_button">
-          <i class="bi bi-trash3"></i>
-        </button>
-      </form>
-      </div>
-      @endif
-      @endcan
-
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+{{-- ./Add modal --}}
 
 {{-- edit modal --}}
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal"
@@ -276,9 +265,64 @@ Apseva Linelist
 <script type="text/javascript">
   var add_button = document.getElementById("add_button");
   var edit_button = document.getElementById("edit_button");
-  var issueid;
+  var appid,service_name,mandal_name,app_number;
+  function showaddmodal(element){
+    appid=element.dataset.requestid;
+    service_name=element.dataset.servicename;
+    mandal_name=element.dataset.mandal;
+    app_number=element.dataset.requestid;
+    document.getElementById("mandal_name_add").value=element.dataset.mandal;    
+    document.getElementById("app_number_add").value=element.dataset.requestid;
+    var myModal = new bootstrap.Modal(document.getElementById("addmodal"), {});
+    myModal.show();
+
+    const addformelement = document.getElementById('add_form');
+  addformelement.addEventListener('submit',event => {
+  event.preventDefault();
+  
+  let portal = document.getElementById('add_portal').value;  
+  let remarks = document.getElementById('add_remarks').value;
+  let pending_with = document.getElementById('add_pending_with').value;
+  let pending_reason = document.getElementById('add_pending_reason').value;
+  let data = {
+    id: appid,
+    service_name:service_name,
+    mandal_name:mandal_name,
+    app_number:app_number,
+    portal:portal,
+    remarks:remarks,
+    pending_reason : pending_reason,
+    pending_with:pending_with,
+    
+  }
+  let config = {
+    headers:{
+        'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+  } 
+
+  axios.post('/create_issue', data,config)
+  .then(function (response) {
+    var myModal = new bootstrap.Modal(document.getElementById("addmodal"), {});
+    myModal.hide();
+    window.location.reload();
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  console.log('Form submission completed.'); 
+
+  });
+
+
+  } //showaddmodalend
+  
+
+
+  
   function showeditmodal(element){
-    issueid = element.dataset.issueid;
+    var issueid = element.dataset.issueid;
     remarks = element.dataset.remarks; 
     console.log(element.dataset.mandal);  
     document.getElementById("mandal_name_edit").value=element.dataset.mandal;
@@ -289,9 +333,8 @@ Apseva Linelist
     document.getElementById("pending_with").value=element.dataset.pending_with;
     var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
     myModal.show();
-    console.log();
-  }
-  const formelement = document.getElementById('editform');
+    
+    const formelement = document.getElementById('editform');
   formelement.addEventListener('submit',event => {
   event.preventDefault();
   
@@ -324,7 +367,9 @@ Apseva Linelist
   .catch(function (error) {
     console.log(error);
   });
-  console.log('Form submission cancelled.');
+  console.log('Form submission completed.');
 });
+
+  } //showeditmodal
 </script>
 @endpush

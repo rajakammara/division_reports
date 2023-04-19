@@ -13,9 +13,12 @@
 </head>
 
 <body>
-  <div class="container mt-4">
-    @yield('content')
-  </div>
+  {{-- <div class="container mt-4"> --}}
+    <div class="mx-4 my-4">
+       @yield('content')
+    </div>
+   
+  {{-- </div> --}}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">

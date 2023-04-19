@@ -41,8 +41,9 @@ class TechnicalIssueController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        //return response()->json($request->all());
         $validated = $request->validate([
-        'appid' => 'required',
+        //'appid' => 'required',
         'service_name' => 'required',
         'mandal_name' => 'required',
         'app_number' => 'required',
@@ -50,7 +51,7 @@ class TechnicalIssueController extends Controller
         'remarks' => 'required',
         'pending_with'=>'required',
         'pending_reason'=>'required'
-    ],['appid.required' => 'Application Id is missing',
+    ],[//'appid.required' => 'Application Id is missing',
         'service_name.required'=>'Service name is missing',
         'mandal_name.required'=>'Mandal name is missing',
         'app_number.required'=>"Request number is missing",
@@ -68,7 +69,8 @@ class TechnicalIssueController extends Controller
         $technicalIssue->pending_reason = $request->get('pending_reason');
         $technicalIssue->pending_with = $request->get('pending_with');
         $technicalIssue->save();
-        return redirect('/apseva_linelist')->with('status', 'Remarks Updated successfully');
+        return response()->json(['success'=>'Updated successfully']);
+        //return redirect('/apseva_linelist')->with('status', 'Remarks Updated successfully');
     }
 
     /**

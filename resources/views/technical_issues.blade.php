@@ -45,20 +45,15 @@ Technical Issues
         <td>{{$item->request_id}}</td>
         <td>{{$item->service_name}}</td>
         <td>{{$item->remarks}}</td>
-
         <td>{{$item->pending_reason}}</td>
         <td>{{$item->pending_with}}</td>
         <td>
           <div class="d-flex">
             <div class="col m-2">
-              <button class="btn btn-primary btn-sm" 
-              data-id="{{$item->id}}" 
-              data-portal="{{$item->portal}}"
-              data-mandal="{{$item->mandal_name}}"
-              data-requestid="{{$item->request_id}}"
-              data-servicename="{{$item->service_name}}"
-              data-remarks="{{$item->remarks}}"
-              data-pending_with="{{$item->pending_with}}"
+              <button class="btn btn-primary btn-sm" data-id="{{$item->id}}" 
+              data-portal="{{$item->portal}}" data-mandal="{{$item->mandal_name}}"
+              data-requestid="{{$item->request_id}}" data-servicename="{{$item->service_name}}"
+              data-remarks="{{$item->remarks}}" data-pending_with="{{$item->pending_with}}"
               data-pending_reason="{{$item->pending_reason}}" 
               onclick="showModal(this)" id="modalbutton"><i class="bi-thin bi-pencil"></i></button>
             </div>
@@ -183,8 +178,8 @@ Technical Issues
     
     myModal.show();
 
-  }
-  const formelement = document.getElementById('myform');
+    //submit
+    const formelement = document.getElementById('myform');
   formelement.addEventListener('submit',event => {
   event.preventDefault();
   
@@ -216,6 +211,11 @@ Technical Issues
   });
   console.log('Form submission cancelled.');
 });
+
+    //.submit
+
+  }
+  
 </script>
 
 @endpush
