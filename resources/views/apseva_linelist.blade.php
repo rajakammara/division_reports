@@ -213,6 +213,7 @@ Apseva Linelist
                       <option value="Technical Issue">Technical Issue</option>
                       <option value="Pending in Other Mandal">Pending in Other Mandal</option>
                       <option value="Pending in Other District">Pending in Other District</option>
+                      <option value="Pending in Others Login">Pending in Others Login</option>
                     </select>
                   </div>
 
