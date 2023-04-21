@@ -235,6 +235,7 @@ Apseva Linelist
                       <option value="JC">JC</option>
                       <option value="Collector">Collector</option>
                       <option value="Others">Others</option>
+		      <option value="Technical Issue">Technical Issue</option>	
                     </select>
                   </div>
                   
@@ -340,7 +341,7 @@ Apseva Linelist
   event.preventDefault();
   
   let updated_remarks = document.getElementById('pending_remarks').value;
-  let pending_reason = document.getElementById("pending_reason").value;
+  let pending_reason = document.getElementById("edit_pending_reason").value;
   let portal=document.getElementById("portal").value;
   let pending_with=document.getElementById("pending_with").value;
   var myModal = new bootstrap.Modal(document.getElementById("editModal"), {});
