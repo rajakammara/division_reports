@@ -148,4 +148,14 @@ class ApsevaAppController extends Controller
         $apseva_linelist=DB::select($query);
         return view('apseva_linelist',compact('apseva_linelist'));
     }
+
+    //apseva pending reason abstract
+    public function getapsevareasons_abstract(){
+        $query='SELECT a.new_mandal_name,sum(case when t.pending_reason="Pending Within Mandal" then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(t.pending_reason) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP" group by a.new_mandal_name
+
+            union ALL
+        select "Total" as "new_mandal_name",sum(case when t.pending_reason="Pending Within Mandal" then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(t.pending_reason) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP"';
+        $apseva_reasons=DB::select($query);
+        return view('apseva_reasons',compact('apseva_reasons'));
+    }
 }

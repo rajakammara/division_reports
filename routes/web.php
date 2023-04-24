@@ -43,6 +43,7 @@ Route::post('/create_issue',[TechnicalIssueController::class,'store'])->name('cr
 Route::post('/update_issue',[TechnicalIssueController::class,'update'])->name('update_issue');
 Route::delete('/{issue}/delete', [TechnicalIssueController::class,'destroy'])->name('issue.destroy');
 Route::get('/getcastereport',[TechnicalIssueController::class,'getCasteIncomeReport']);
+Route::get('/getapsevareasons',[ApsevaAppController::class,'getapsevareasons_abstract']);
 });
 
 
