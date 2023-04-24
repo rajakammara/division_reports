@@ -3,7 +3,7 @@
 APSEVA Revenue & Civil Supplies Mandal Abstract
 @endsection
 @section('content')
-<table class="table table-bordered table-sm text-center">
+<table class="table table-bordered table-sm text-center border-dark">
   <thead>
     <tr>
       <th colspan="7">APSEVA Revenue & Civil Supplies Abstract</th>

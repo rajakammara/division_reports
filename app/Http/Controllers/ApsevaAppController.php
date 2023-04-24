@@ -100,6 +100,7 @@ class ApsevaAppController extends Controller
         $apseva_abstract = DB::select($query);
         return view('apseva',compact('apseva_abstract'));
     }
+    
 
     
     //service name as heading
@@ -119,8 +120,9 @@ class ApsevaAppController extends Controller
         return view('apseva', compact('apseva_abstract', 'columnHeadings'));
     }
     //mandal name as heading
-    public function apseva_service_abstract()
+    public function apseva_service_abstract($color=null)
     {
+
 
         //dd($data);
         $columnHeadings = DB::table('apseva_apps')->where("new_mandal_name", "!=", "null")->orderBy("new_mandal_name")->distinct()->pluck('new_mandal_name');
@@ -139,7 +141,12 @@ class ApsevaAppController extends Controller
         $mandal_total_pivot = DB::select($mandal_total_pivot);
         //dd($mandal_total_pivot);
 
-        return view('apseva_mandal', compact('apseva_abstract', 'columnHeadings', 'mandal_total_pivot'));
+        if($color==1){
+            return view('apseva_mandal_color', compact('apseva_abstract', 'columnHeadings', 'mandal_total_pivot'));
+        }else{
+          return view('apseva_mandal', compact('apseva_abstract', 'columnHeadings', 'mandal_total_pivot'));  
+        }
+        
     }
 
     //apseva linelist
@@ -151,10 +158,9 @@ class ApsevaAppController extends Controller
 
     //apseva pending reason abstract
     public function getapsevareasons_abstract(){
-        $query='SELECT a.new_mandal_name,sum(case when t.pending_reason="Pending Within Mandal" then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(t.pending_reason) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP" group by a.new_mandal_name
-
-            union ALL
-        select "Total" as "new_mandal_name",sum(case when t.pending_reason="Pending Within Mandal" then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(t.pending_reason) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP"';
+        $query='SELECT a.new_mandal_name,sum(case when (t.pending_reason="Pending Within Mandal" or t.pending_reason is null) then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(case when pending_reason is null then 1 else pending_reason end) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP" and department="Revenue" group by a.new_mandal_name
+        union ALL
+        select "Total" as "new_mandal_name",sum(case when (t.pending_reason="Pending Within Mandal" or t.pending_reason is null) then 1 else 0 end) as "Pending_within_Mandal",sum(case when t.pending_reason="Technical Issue" then 1 else 0 end) as "Technical_Issue",sum(case when t.pending_reason="Pending in Other Mandal" then 1 else 0 end) as "Pending_in_Other_Mandal",sum(case when t.pending_reason="Pending in Other District" then 1 else 0 end) as "Pending_in_Other_District",sum(case when t.pending_reason="Pending in Others Login" then 1 else 0 end) as "Pending_in_Others_Login",count(case when pending_reason is null then 1 else pending_reason end) as "Total" FROM technical_issues t right join apseva_apps a on t.request_id=a.app_number where div_name="ATP" and department="Revenue"';
         $apseva_reasons=DB::select($query);
         return view('apseva_reasons',compact('apseva_reasons'));
     }

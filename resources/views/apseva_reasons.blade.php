@@ -4,7 +4,7 @@ Apseva Pending Reasons Abstract
 @endsection
 
 @section('content')
-<table class="table table-bordered table-sm text-center" id="reasonstable">
+<table class="table table-bordered table-sm text-center border-dark" id="reasonstable">
 		<thead>
 			<tr>
 				<th colspan="8">

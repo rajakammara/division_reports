@@ -22,7 +22,7 @@ Technical Issues
 @endif
 <div class="container">
   <h5 class="text-center"> APSEVA Technical issues - Anantapur Division - {{date('d-m-Y')}} </h5>
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm border-dark">
     <thead>
       <tr>
         <th>Sno</th>
@@ -157,7 +157,7 @@ Technical Issues
 {{-- ./Modal end --}}
 </div>
 @endsection
-@push('stylesheet')
+@push('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 @endpush
 @push('scripts')

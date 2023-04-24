@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 class WeblandController extends Controller
 {
-  public function mutation_report(){
+  public function mutation_report($color=null){
     $currentDate = date('d/m/Y');
     $postdata = [
       "Status"=>'MD',
@@ -36,7 +36,14 @@ class WeblandController extends Controller
     ];
     $response = Http::withHeaders(['Content-type'=>'application/json;charset=UTF-8'])->post($postUrl,$postdata)->body();
     $mtt_response = json_decode($response,true);
-    return view('webland',compact('mtt_response','mtc_response'));
+
+    if ($color==1) {
+      return view('webland_color',compact('mtt_response','mtc_response'));
+    } else {
+      return view('webland',compact('mtt_response','mtc_response'));
+    }
+    
+    
   }
   public function otc_report(){
     $distpostdata = [

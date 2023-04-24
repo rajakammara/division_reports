@@ -5,7 +5,7 @@ Apseva Service wise Abstract
 @section('content')
 <div>
 
-  <table class="table table-bordered table-sm border-dark">
+  <table class="table table-bordered table-sm border-dark break-word">
     <thead style=" font-size: 12pt;" class="verticle-align-middle text-center">
       <tr>
         <th colspan=14 class="fs-5 text-center">
@@ -27,16 +27,17 @@ Apseva Service wise Abstract
     <tbody style=" font-size: 12pt;">
       @foreach($apseva_abstract as $item)
       <tr>
-        <td class="">
-          {{$item->service_name}}
+        <td class="w-auto" style="font-size:11pt">
+          {{ucfirst(strtolower($item->service_name))}}
+          
         </td>
 
         @foreach($columnHeadings as $heading)
-        <td class="text-center align-middle @if($item->$heading>0) fw-bold fs-5 @endif">
+        <td class="text-center align-middle w-auto @if($item->$heading>0) bg-danger text-white @endif">
           {{$item->$heading}}
         </td>
         @endforeach
-        <td class="text-center align-middle @if($item->Total>0) fw-bold fs-5 @endif">
+        <td class="text-center align-middle w-auto @if($item->Total>0) bg-danger text-white @endif">
           {{$item->Total}}
         </td>
       </tr>
@@ -62,3 +63,13 @@ Apseva Service wise Abstract
 
 </div>
 @endsection
+
+@push('styles')
+<style type="text/css">
+ .table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+</style>
+@endpush

@@ -20,7 +20,7 @@ Apseva Linelist
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-sm border-dark">
   <thead>
     <tr>
       @can('isAdmin')
@@ -259,7 +259,7 @@ Apseva Linelist
         </div>
 {{-- edit modal end --}}
 @endsection
-@push('stylesheet')
+@push('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 @endpush
 @push('scripts')

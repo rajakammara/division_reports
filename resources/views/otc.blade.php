@@ -4,7 +4,7 @@ One Time Conversion and Land Conversion
 @endsection
 @section('content')
 <div class="container">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm border-dark">
     <thead class="fw-bold">
       <tr class="text-center">
         <td colspan=11>Land Conversion Abstract (G.O.Ms.No.98)
@@ -84,7 +84,7 @@ One Time Conversion and Land Conversion
   </table>
 </div>
 <div class="container">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm border-dark">
     <thead class="fw-bold">
       <tr class="text-center">
         <td colspan=12>Land Conversion Abstract (G.O.Ms.No.98)
@@ -168,7 +168,7 @@ One Time Conversion and Land Conversion
 </div>
 {{-- OTC --}}
 <div class="container">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm border-dark">
     <thead class="fw-bold">
       <tr class="text-center">
         <td colspan=12>One Time Conversion Abstract (G.O.Ms.No.227)
@@ -250,7 +250,7 @@ One Time Conversion and Land Conversion
 </div>
 {{-- division otc --}}
 <div class="container">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm border-dark">
     <thead class="fw-bold">
       <tr class="text-center">
         <td colspan=12>One Time Conversion Abstract (G.O.Ms.No.227)

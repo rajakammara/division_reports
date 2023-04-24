@@ -4,7 +4,7 @@ Integrated Caste & Income Certificate
 @endsection
 
 @section('content')
-<table class="table table-bordered table-sm text-center">
+<table class="table table-bordered table-sm text-center border-dark">
 		<thead>
 			<tr>
 				<th colspan="8">
