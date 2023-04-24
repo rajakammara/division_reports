@@ -14,8 +14,9 @@
         <a href="/otc_report" target="_blank" class="list-group-item list-group-item-action">Land Conversion & One Time
             Conversion
             Abstract</a>
-        <a href="apseva_linelist" target="_blank" class="list-group-item list-group-item-action">APSEVA PBSLA
+        <a href="/apseva_linelist" target="_blank" class="list-group-item list-group-item-action">APSEVA PBSLA
             Linelist</a>
+        <a href="/getapsevareasons" target="_blank" class="list-group-item list-group-item-action">APSEVA PBSLA Reasons Abstract</a>
 
         <a href="/technical_issues" target="_blank" class="list-group-item list-group-item-action">Technical Issues</a>
         <a href="/getcastereport" target="_blank" class="list-group-item list-group-item-action">Integrated Caste & Income Certificate</a>
