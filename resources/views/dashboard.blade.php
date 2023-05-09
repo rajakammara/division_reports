@@ -12,7 +12,7 @@
         <a href="/getapsevareasons" target="_blank" class="list-group-item list-group-item-action">APSEVA PBSLA Reasons Abstract</a>
         <a href="/technical_issues" target="_blank" class="list-group-item list-group-item-action">Technical Issues</a>
         <a href="/getcastereport" target="_blank" class="list-group-item list-group-item-action">Integrated Caste & Income Certificate</a>
-        
+        <a href="/getpcekyc" target="_blank" class="list-group-item list-group-item-action">Housesites PC ekyc</a>
     </div>
 </div>
 @stop

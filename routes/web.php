@@ -46,6 +46,8 @@ Route::post('/update_issue',[TechnicalIssueController::class,'update'])->name('u
 Route::delete('/{issue}/delete', [TechnicalIssueController::class,'destroy'])->name('issue.destroy');
 Route::get('/getcastereport',[TechnicalIssueController::class,'getCasteIncomeReport']);
 Route::get('/getapsevareasons',[ApsevaAppController::class,'getapsevareasons_abstract']);
+
+Route::get('/getpcekyc',[TechnicalIssueController::class,'getPCreport']);
 });
 
 

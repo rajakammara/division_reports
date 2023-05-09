@@ -14,11 +14,12 @@ class ApsevaAppController extends Controller
     public function fetch_apseva_report()
     {
         $currentDate = date('d/m/Y');
-        $revenue_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Transaction%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Revenue&Service=All&FromDate=06/01/2022&ToDate=" . $currentDate;
+        $revenue_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Transaction%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Revenue&Service=All&FromDate=06/01/2022&ToDate=" . $currentDate . "&RevenueMandal=All";
 
         $response = Http::withHeaders(["ocp-apim-subscription-key" => "36491518b58b42cfbffa854fde92f134"])->accept('application/json')->get($revenue_url);
 
         $response = json_decode($response, true);
+        //dd($response);
         $data = [];
         //dd($response);
         $keys = array_keys($response);
@@ -30,14 +31,15 @@ class ApsevaAppController extends Controller
             // echo json_encode($result);   
             //    echo $result[$keys[4]] . ' '. $result[$keys[5]] . $result[$keys[6]] . ' '. $result[$keys[7]] . ' '. $result[$keys[14]] . ' '. $result[$keys[17]] . ' '. $result[$keys[22]] . ' '. $result[$keys[15]] . ' '.$result[$keys[13]] .'<br>'; 
 
-            $temp = array("mandal_name" => $result[$keys[4]], "sec_name" => $result[$keys[5]], "department" => $result[$keys[6]], "service_name" => $result[$keys[7]], "app_number" => $result[$keys[14]], "sla_status" => $result[$keys[17]], "rural_urban" => $result[$keys[22]], "app_date" => $result[$keys[15]], "sla" => $result[$keys[13]]);
+            $temp = array("mandal_name" => $result[$keys[8]], "sec_name" => $result[$keys[9]], "department" => $result[$keys[10]], "service_name" => $result[$keys[11]], "app_number" => $result[$keys[18]], "sla_status" => $result[$keys[21]], "rural_urban" => $result[$keys[26]], "app_date" => $result[$keys[19]], "sla" => $result[$keys[17]]);
             array_push($data, $temp);
         }
         // Civil supplies
-        $cs_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Transaction%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Civil%20Supplies&Service=All&FromDate=01/01/2023&ToDate=" . $currentDate;
+        $cs_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Transaction%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Civil%20Supplies&Service=All&FromDate=06/01/2023&ToDate=" . $currentDate . "&RevenueMandal=All";
         $response = Http::withHeaders(["ocp-apim-subscription-key" => "36491518b58b42cfbffa854fde92f134"])->accept('application/json')->get($cs_url);
 
         $response = json_decode($response, true);
+
         foreach ($response['result'] as $key => $result) {
             $keys = array_keys($result);
             //echo var_dump($keys);  
@@ -45,7 +47,7 @@ class ApsevaAppController extends Controller
             // echo json_encode($result);   
             //    echo $result[$keys[4]] . ' '. $result[$keys[5]] . $result[$keys[6]] . ' '. $result[$keys[7]] . ' '. $result[$keys[14]] . ' '. $result[$keys[17]] . ' '. $result[$keys[22]] . ' '. $result[$keys[15]] . ' '.$result[$keys[13]] .'<br>'; 
 
-            $temp = array("mandal_name" => $result[$keys[4]], "sec_name" => $result[$keys[5]], "department" => $result[$keys[6]], "service_name" => $result[$keys[7]], "app_number" => $result[$keys[14]], "sla_status" => $result[$keys[17]], "rural_urban" => $result[$keys[22]], "app_date" => $result[$keys[15]], "sla" => $result[$keys[13]]);
+            $temp = array("mandal_name" => $result[$keys[8]], "sec_name" => $result[$keys[9]], "department" => $result[$keys[10]], "service_name" => $result[$keys[11]], "app_number" => $result[$keys[18]], "sla_status" => $result[$keys[21]], "rural_urban" => $result[$keys[26]], "app_date" => $result[$keys[19]], "sla" => $result[$keys[17]]);
             array_push($data, $temp);
         }
 
@@ -63,9 +65,9 @@ class ApsevaAppController extends Controller
     public function fetch_abstract_report()
     {
         $currentDate = date('d/m/Y');
-        $rev_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Mandal%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Revenue&Service=All&FromDate=02/04/2022&ToDate=" . $currentDate;
+        $rev_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Mandal%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Revenue&Service=All&FromDate=02/04/2022&ToDate=" . $currentDate . "&RevenueMandal=All";
 
-        $cs_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Mandal%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Civil%20Supplies&Service=All&FromDate=02/04/2022&ToDate=" . $currentDate;
+        $cs_url = "https://api.vswsonline.ap.gov.in/reports/api/CSPServiceDashboard/GetCSPServiceDashboardData?FlagName=Mandal%20Wise&DistrictID=502&RUrban=All&MandalId=All&SecCode=All&Department=Civil%20Supplies&Service=All&FromDate=02/04/2022&ToDate=" . $currentDate . "&RevenueMandal=All";
         //Revenue
         $response = Http::withHeaders(["ocp-apim-subscription-key" => "36491518b58b42cfbffa854fde92f134"])->accept('application/json')->get($rev_url)->body();
         $response = json_decode($response,true);
@@ -74,7 +76,7 @@ class ApsevaAppController extends Controller
         
         foreach ($response['result'] as $key => $result) {
             $keys = array_keys($result);
-            $temp = array("mandal_name" => $result[$keys[4]], "department" => "Revenue", "total_req" => $result[$keys[8]], "beyond_sla" => $result[$keys[9]], "within_sla" => $result[$keys[10]], "lapsing24hrs" => $result[$keys[18]], "lapsing48hrs" => $result[$keys[19]],"rural_urban" => $result[$keys[22]]);
+            $temp = array("mandal_name" => $result[$keys[8]], "department" => "Revenue", "total_req" => $result[$keys[12]], "beyond_sla" => $result[$keys[13]], "within_sla" => $result[$keys[14]], "lapsing24hrs" => $result[$keys[22]], "lapsing48hrs" => $result[$keys[23]],"rural_urban" => $result[$keys[26]]);
             array_push($data,$temp);
         }
         // CS
@@ -82,7 +84,7 @@ class ApsevaAppController extends Controller
         $response = json_decode($response,true);
          foreach ($response['result'] as $key => $result) {
             $keys = array_keys($result);
-            $temp = array("mandal_name" => $result[$keys[4]], "department" => "Civil Supplies", "total_req" => $result[$keys[8]], "beyond_sla" => $result[$keys[9]], "within_sla" => $result[$keys[10]], "lapsing24hrs" => $result[$keys[18]], "lapsing48hrs" => $result[$keys[19]],"rural_urban" => $result[$keys[22]]);
+            $temp = array("mandal_name" => $result[$keys[8]], "department" => "Civil Supplies", "total_req" => $result[$keys[12]], "beyond_sla" => $result[$keys[13]], "within_sla" => $result[$keys[14]], "lapsing24hrs" => $result[$keys[22]], "lapsing48hrs" => $result[$keys[23]],"rural_urban" => $result[$keys[26]]);
             array_push($data,$temp);
         }
 

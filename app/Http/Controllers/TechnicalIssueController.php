@@ -128,6 +128,71 @@ class TechnicalIssueController extends Controller
         
     }
 
+    public function getPCreport(){
+        $url="http://36.255.253.208/Housing_Ekyc.aspx";
+        $jar = new \GuzzleHttp\Cookie\CookieJar();
+        $client = new \GuzzleHttp\Client(['cookies' => $jar]);
+        $response = $client->get($url); 
+        $cookie = $jar->getCookieByName('ASP.NET_SessionId');
+        //dd($cookie->getValue());
+        //dd($response->getBody()->getContents());      
+        $htmlString = $response->getBody()->getContents();
+        //add this line to suppress any warnings
+        libxml_use_internal_errors(true);
+        $doc = new \DOMDocument();
+        $doc->preserveWhiteSpace = false; 
+        $doc->loadHTML($htmlString);
+        $viewstategenerator=$doc->getElementById('__VIEWSTATEGENERATOR')->getAttribute('value');
+        $viewstate=$doc->getElementById('__VIEWSTATE')->getAttribute('value');
+        $eventvalidation=$doc->getElementById('__EVENTVALIDATION')->getAttribute('value');
+        $postdata=[
+            '__VIEWSTATE'=>$viewstate,
+            '__VIEWSTATEGENERATOR'=>$viewstategenerator,
+            '__EVENTVALIDATION'=>$eventvalidation,
+            '__EVENTTARGET'=>'ctl00$ContentPlaceHolder1$GridView1$ctl04$LinkButton2',
+
+        ];
+       // dd($postdata);
+        //$url2="http://36.255.253.208/Housing_Ekyc_Mndl.aspx";
+        $request = $client->request('POST',$url,['form_params'=>$postdata]);        
+        
+        $doc->loadHTML($request->getBody()->getContents());
+        
+        $tables = $doc->getElementsByTagName('table');
+        $rows = $tables->item(0)->getElementsByTagName('tr'); 
+        
+        $data=[];
+        foreach ($rows as $row) {
+
+            $cols = $row->getElementsByTagName('td');             
+            if(is_object($cols ->item(0))) {
+            $temp = [];
+            $temp['sno'] = $cols[0]->nodeValue;
+            $temp['mandal'] = $cols[1]->nodeValue;
+            $temp['total'] = $cols[2]->nodeValue;
+            $temp['completed'] = $cols[3]->nodeValue;
+            $temp['ekyc_completed'] = $cols[4]->nodeValue;
+            
+            //var_dump($cols[0]->nodeValue);
+            array_push($data,$temp);
+            }
+        }
+        //print_r($data);
+        $div_mandals=["ANANTAPUR (URBAN)","TADIPATRI (URBAN)","TADIPARTRI","PEDDAPAPPUR","ATMAKUR","KUDERU","GARLADINNE","SINGANAMALA","PUTLUR","YELLANUR","NARPALA","BUKKARAYASAMUDRAM","ANANTHAPURAM RURAL","RAPTHADU"];
+        $data=array_filter($data,function($var) use($div_mandals){
+            foreach ($div_mandals as $value) {
+                //var_dump($value);
+                //var_dump($var);
+                if(trim($var['mandal'])==$value){
+                    return $var;
+                }
+            }
+        });
+        //$percentage  = array_column($data, 'percentage');
+        //array_multisort($percentage, SORT_ASC, $data);
+        return view('psekyc',compact('data'));
+    }
+
     public function getCasteIncomeReport(){
         $url="http://36.255.253.208/castecertificate.aspx";
         $jar = new \GuzzleHttp\Cookie\CookieJar();
