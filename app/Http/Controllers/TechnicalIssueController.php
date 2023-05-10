@@ -178,7 +178,7 @@ class TechnicalIssueController extends Controller
             }
         }
         //print_r($data);
-        $div_mandals=["ANANTAPUR (URBAN)","TADIPATRI (URBAN)","TADIPARTRI","PEDDAPAPPUR","ATMAKUR","KUDERU","GARLADINNE","SINGANAMALA","PUTLUR","YELLANUR","NARPALA","BUKKARAYASAMUDRAM","ANANTHAPURAM RURAL","RAPTHADU"];
+        $div_mandals=["ANANTAPUR (Urban)","TADIPATRI (Urban)","TADIPARTRI","PEDDAPAPPUR","ATMAKUR","KUDERU","GARLADINNE","SINGANAMALA","PUTLUR","YELLANUR","NARPALA","BUKKARAYASAMUDRAM","ANANTHAPURAM RURAL","RAPTHADU"];
         $data=array_filter($data,function($var) use($div_mandals){
             foreach ($div_mandals as $value) {
                 //var_dump($value);
