@@ -55,7 +55,7 @@ Housing ekyc
 				<td colspan="2">Total</td>
 				<td>{{$total}}</td>
 				<td>{{$completed}}</td>
-				<td>{{number_format(($completed/$total)*(100),2)}}</td>
+				<td>{{number_format(($ekyc/14),2)}}</td>
 				
 			</tr>
 			</tfoot>
